@@ -1,0 +1,48 @@
+{% extends 'products/base.html' %}
+
+{% load static %}
+
+<div class="page-header">
+  <h1>{{product.title}}</h1>
+</div>
+
+{% block content %}
+
+
+
+
+<div class='row'>
+<div class='col-sm-4'>
+{% for img in images %}
+	
+	{% if img.featured %}
+		<div class="col-xs-12">
+		<img class='img-responsive' src="{{ MEDIA_URL }}{{img.image}}"/>
+		</hr>
+		</div>
+	{% elif not img.featured %}
+
+	<div class="col-xs-6">
+		<a href="#" class="thumbnail">
+		<img class='img-responsive' src='{% static "img/placeholder.png" %}'>
+		</a>
+	</div>
+
+	{% endif %}
+{% endfor %}
+</div>
+
+<div class='col-sm-8'>
+<h1>{{product.title}}<a href='#' class='pull-right'>Add to Cart</a></h1>
+<hr/>
+Price: {{product.price}}</br>
+Shipping: Free with $25+ purchases
+<hr/>
+{{product.description|linebreaks}}
+
+</div>
+</div>
+
+
+
+{% endblock %}
