@@ -10,6 +10,8 @@ urlpatterns = [
 
 	path('', views.view, name='view'),
 
+	path('<slug:slug>/',views.update_cart, name='update_cart'),
+
 ]
 
 
